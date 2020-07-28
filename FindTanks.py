@@ -7,8 +7,11 @@ import FindShotPowerNeeded
 def findTanks():
     img = cv2.imread('ScreenShot.png')
     #Find Enemy Tanks
-    ORANGE_MIN = np.array([155, 195, 0],np.uint8)
-    ORANGE_MAX = np.array([179, 255, 255],np.uint8)
+    #ORANGE_MIN = np.array([155, 195, 0],np.uint8)
+    #ORANGE_MAX = np.array([179, 255, 255],np.uint8)
+    ORANGE_MIN = np.array([0, 222, 117],np.uint8)
+    ORANGE_MAX = np.array([51, 255, 255],np.uint8)
+    
     hsv_img = cv2.cvtColor(img,cv2.COLOR_BGR2HSV)
     frame_threshed = cv2.inRange(hsv_img, ORANGE_MIN, ORANGE_MAX)
     frame_threshed = cv2.GaussianBlur(frame_threshed, (7, 7), 0)
@@ -48,7 +51,7 @@ def findTanks():
         #cv2.imshow("Player Tanks Detected",cv2.imread("ImageWithPlayerCoords.png"))
         #cv2.waitKey(5000)
         #cv2.destroyAllWindows()
-        PlayerNum = int(input("Type Which Enemy you would like (0-"+str(len(PlayerCoords) -1)+ "): "))
+        PlayerNum = int(input("Type Which Player you would like (0-"+str(len(PlayerCoords) -1)+ "): "))
     elif len(PlayerCoords) == 1:
         PlayerNum = 0
     elif len(PlayerCoords) == 0:
@@ -57,7 +60,7 @@ def findTanks():
     x2,y2 = PlayerCoords[PlayerNum]
     print(x1,x2,y1,y2)
     distancex = abs(x1-x2)
-    distancey = abs(y1-y2)
+    distancey = y1-y2
     angle = 0
     while True:
         angle = angle + 1

@@ -50,6 +50,6 @@ def GetCoords():
     #cv2.imshow('image2', img2)  
     cv2.imwrite('ImageWithPlayerCoords.png', img2)
     # Exiting the window if 'q' is pressed on the keyboard. 
-    if cv2.waitKey(0) & 0xFF == ord('q'):
-        cv2.destroyAllWindows()
+    #if cv2.waitKey(0) & 0xFF == ord('q'):
+    #   cv2.destroyAllWindows()
     return COORDSTOSEND
